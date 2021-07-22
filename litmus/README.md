@@ -17,6 +17,22 @@ kubectl apply -f https://hub.litmuschaos.io/api/chaos/1.13.8?file=charts/generic
 
 ## Conduct an experiment
 
+### Annotate application
+Annotate deployments which the chaos experiments will act on
+```console
+kubectl edit deploy/yelb-appserver -n application
+```
+Add the following lines under `metadata`
+```
+labels: 
+  app: yelb-appserver
+```
+### Label application
+Add labels to deployments so chaos engine can detect the deployment
+```console
+kubectl annotate deploy/yelb-appserver litmuschaos.io/chaos="true" -n application
+```
+
 ### Setup Service account
 A service account should be created to allow chaosengine to run experiments in your application namespace. Apply the specific experiement rbac.yaml file. 
 This service account has just enough permissions needed to run the pod-delete chaos experiment.
