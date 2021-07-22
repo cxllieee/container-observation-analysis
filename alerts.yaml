@@ -1,0 +1,47 @@
+    - alert: HostOutOfMemory
+      annotations:
+        description: |-
+          Node memory is filling up (< 20% left)
+            VALUE = {{ $value }}
+            LABELS = {{ $labels }}
+        summary: Host out of memory (instance {{ $labels.instance }})
+      expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 20
+      for: 1m
+      labels:
+        severity: warning
+    - alert: HostUnusualDiskReadRate
+      annotations:
+        description: |-
+          Disk is probably reading too much data (> 50 MB/s)
+            VALUE = {{ $value }}
+            LABELS = {{ $labels }}
+        summary: Host unusual disk read rate (instance {{ $labels.instance }})
+      expr: sum by (instance) (rate(node_disk_read_bytes_total[2m])) / 1024 / 1024
+        > 50
+      for: 0m
+      labels:
+        severity: warning
+    - alert: HostUnusualDiskWriteRate
+      annotations:
+        description: |-
+          Disk is probably writing too much data (> 50 MB/s)
+            VALUE = {{ $value }}
+            LABELS = {{ $labels }}
+        summary: Host unusual disk write rate (instance {{ $labels.instance }})
+      expr: sum by (instance) (rate(node_disk_written_bytes_total[2m])) / 1024 / 1024
+        > 50
+      for: 0m
+      labels:
+        severity: warning
+    - alert: HostHighCpuLoad
+      annotations:
+        description: |-
+          CPU load is > 80%
+            VALUE = {{ $value }}
+            LABELS = {{ $labels }}
+        summary: Host high CPU load (instance {{ $labels.instance }})
+      expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m]))
+        * 100) > 80
+      for: 1m
+      labels:
+        severity: warning
