@@ -1,4 +1,5 @@
 # Prometheus 
+Edits to be done in the `prometheus` file
 
 ## Alertmanager
 Input your slack API and respective alert channel in the `prometheus` file
