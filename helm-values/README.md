@@ -18,6 +18,9 @@ helm install [RELEASE_NAME] prometheus-community/prometheus-redis-exporter
 ```
 ## Prometheus
 Once prometheus is install add the custom rules from `alerts.yaml` into  .
+```console
+kubectl edit prometheusrules prometheus-kube-prometheus-kubernetes-resources -n monitoring
+```
 
 ## Alertmanager
 Input your slack API and respective alert channel in the `prometheus` file
