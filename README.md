@@ -23,6 +23,18 @@ minikube -p test addons enable ingress
 minikube -p test addons enable metrics-server
 ```
 
+### Kubernetes Dashboard
+Apply the dashboard and create a `service account` and `rbac` for dashboard admin. 
+
+```console
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+kubectl apply -f dashboard-admin.yaml
+```
+Access the dashboard at :
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+
+
 ### Deploy yelb 
 Deploy Yelb to the cluster in the `application` namespace
 
