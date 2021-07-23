@@ -1,5 +1,9 @@
 # Chaos Engineering 
-Choas experiments will be conducting through litmus. Included are 5 different chaos experiment.
+Choas experiments will be conducting through litmus. [chaos hub](https://hub.litmuschaos.io/) provides a variety of chaos experiments which are readily available for use. Sourcing through the different experiments u can then apply it to your kubernetes cluster with the ability to tweak the experiment specifications to your needs. This will start a chaos runner and an experiment job which will act on your cluster and finally you can review the chaos experiment result to see if the cluster has passed the test.
+
+This picture shows the flow of a chaos experiment:
+
+![litmus](images/litmus-flow.png)
 
 ## Install Litmus
 Apply the LitmusChaos Operator manifest:
