@@ -3,7 +3,7 @@ Choas experiments will be conducting through litmus. [chaos hub](https://hub.lit
 
 This picture shows the flow of a chaos experiment:
 
-![litmus](images/litmus-flow.png)
+![litmus](../images/litmus-flow.png)
 
 ## Install Litmus
 Apply the LitmusChaos Operator manifest:
