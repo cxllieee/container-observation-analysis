@@ -24,17 +24,19 @@ kubectl apply -f https://hub.litmuschaos.io/api/chaos/1.13.8?file=charts/generic
 ### Annotate application
 Annotate deployments which the chaos experiments will act on
 ```console
+kubectl annotate deploy/yelb-appserver litmuschaos.io/chaos="true" -n application
+```
+
+### Label application
+Add labels to deployments so chaos engine can detect the deployment
+```console
 kubectl edit deploy/yelb-appserver -n application
 ```
+
 Add the following lines under `metadata`
 ```
 labels: 
   app: yelb-appserver
-```
-### Label application
-Add labels to deployments so chaos engine can detect the deployment
-```console
-kubectl annotate deploy/yelb-appserver litmuschaos.io/chaos="true" -n application
 ```
 
 ### Setup Service account
