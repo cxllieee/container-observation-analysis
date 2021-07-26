@@ -9,12 +9,12 @@ helm repo update
 ```
 
 ## Install Chart
-Install the respective charts with values under `helm-values`.
+Install the respective charts with values under `helm-values` in the `monitoring` namespace.
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus
-helm install [RELEASE_NAME] prometheus-community/prometheus-postgres-exporter
-helm install [RELEASE_NAME] prometheus-community/prometheus-redis-exporter
+helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring -f .\prometheus.yaml
+helm install postgres-exporter prometheus-community/prometheus-postgres-exporter -n monitoring -f .\postgres-values.yaml
+helm install redis-exporter prometheus-community/prometheus-redis-exporter -n monitoring -f .\redis-values.yaml
 ```
 ## Prometheus
 Once prometheus is install add the custom rules from `alerts.yaml` into  .
