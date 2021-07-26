@@ -46,5 +46,5 @@ Deploy Yelb to the cluster in the `application` namespace
 
 ```console
 kubectl create ns application
-kubectl apply -f /Kubernetes/yaml -n application
+kubectl apply -f .\Kubernetes\yaml\ -n application
 ```
