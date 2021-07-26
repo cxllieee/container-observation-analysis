@@ -48,3 +48,10 @@ Deploy Yelb to the cluster in the `application` namespace
 kubectl create ns application
 kubectl apply -f .\Kubernetes\yaml\ -n application
 ```
+
+#### Ingress
+Edit hosts file to add `yelb.domain.com`
+
+```console
+kubectl get ing -n application
+```
